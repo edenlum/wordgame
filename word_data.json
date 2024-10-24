@@ -1,0 +1,88 @@
+[
+    {
+        "chosen_word": "bumper",
+        "subwords": [
+            [
+                "pure",
+                "adj\tFree of flaws or imperfections; unsullied. "
+            ],
+            [
+                "rue",
+                "n\t(archaic or dialectal) Sorrow; repentance; regret. "
+            ],
+            [
+                "uber",
+                "adj\tSuper; high-level; high-ranking "
+            ],
+            [
+                "per",
+                "adj\t(rare, nonstandard) Belonging to per, their (singular). Gender-neutral third-person singular possessive adjective, coordinate with gendered his and her. "
+            ],
+            [
+                "rub",
+                "n\tAn act of rubbing. "
+            ],
+            [
+                "pre",
+                "n\t(rail transport) The station code of Prince Edward in Hong Kong. "
+            ],
+            [
+                "rum",
+                "n\t(uncountable) A distilled spirit derived from fermented cane sugar and molasses. "
+            ],
+            [
+                "rem",
+                "n\t(computing) A remark (programming language statement used for documentation). "
+            ],
+            [
+                "rep",
+                "v\t(informal) To represent; to act as a representative for. "
+            ],
+            [
+                "peru",
+                "n\tA country in South America. Official name: Republic of Peru. Capital and largest city: Lima. "
+            ],
+            [
+                "pub",
+                "n\t(UK, Ireland, Australia, New Zealand, Canada, South Africa) A public house where beverages, primarily alcoholic, may be bought and consumed, also providing food and sometimes entertainment such as live music or television. "
+            ],
+            [
+                "rpm",
+                "n\t(rail transport) The station code of Royapuram railway station in India. "
+            ],
+            [
+                "eur",
+                "n\t(sports) Abbreviation of Team Europe. "
+            ]
+        ]
+    },
+    {
+        "chosen_word": "octavo",
+        "subwords": [
+            [
+                "cat",
+                "n\tAn animal of the family Felidae: "
+            ],
+            [
+                "act",
+                "n\t(New Zealand politics) ACT New Zealand, a liberal conservative political party in New Zealand "
+            ],
+            [
+                "coat",
+                "n\t(countable) An outer garment covering the upper torso and arms.\u1d42\u1d56 "
+            ],
+            [
+                "too",
+                "adv\t(focus) Likewise. "
+            ],
+            [
+                "tao",
+                "n\t(by extension) The art or skill of doing something in harmony with the essential nature of the thing. "
+            ],
+            [
+                "oct",
+                "n\tAbbreviation of October. [The tenth month of the Gregorian calendar, following September and preceding November. Abbreviation: Oct.] "
+            ]
+        ]
+    }
+]

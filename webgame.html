@@ -126,25 +126,26 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            console.log("Fetching word data from server...");
-            fetch('http://127.0.0.1:5000/get_word_data')
+            console.log("Fetching word data from local JSON file...");
+            fetch('word_data.json')
                 .then(response => {
-                    console.log("Received response from server");
+                    console.log("Received response from JSON file");
                     return response.json();
                 })
                 .then(data => {
                     console.log("Data received:", data);
-                    if (data.error) {
-                        console.error("Error from server:", data.error);
+                    if (!data) {
+                        console.error("Error loading data from JSON file");
                         document.getElementById("loading-message").textContent = "Failed to load game data. Please try again later.";
                         return;
                     }
 
-                    const chosenWord = data.chosen_word;
-                    const subwords = data.subwords; // Now subwords is an array of tuples (word, definition)
+                    const randomEntry = data[Math.floor(Math.random() * data.length)];
+                    const chosenWord = randomEntry.chosen_word;
+                    const subwords = randomEntry.subwords;
 
                     if (!chosenWord || !subwords || subwords.length === 0) {
-                        console.error("Incomplete data received from server");
+                        console.error("Incomplete data received from JSON file");
                         document.getElementById("loading-message").textContent = "Failed to load complete game data. Please try again later.";
                         return;
                     }
