@@ -119,6 +119,7 @@
     <div class="letters-container" id="letters-container" style="display: none;">
         <!-- Letters to choose from -->
     </div>
+    <button id="submit-button" style="display: none; margin-top: 10px;">Submit</button>
     <div id="message"></div>
     <div id="celebration">Congratulations! You found all the words!</div>
     <button id="new-game-button" onclick="location.reload()">New Game</button>
@@ -155,6 +156,7 @@
                     document.getElementById("words-container").style.display = "flex";
                     document.getElementById("input-area").style.display = "block";
                     document.getElementById("letters-container").style.display = "flex";
+                    document.getElementById("submit-button").style.display = "block";
 
                     const wordsContainer = document.getElementById("words-container");
                     const inputArea = document.getElementById("input-area");
@@ -163,6 +165,7 @@
                     const celebrationDiv = document.getElementById("celebration");
                     const newGameButton = document.getElementById("new-game-button");
                     const tooltip = document.getElementById("tooltip");
+                    const submitButton = document.getElementById("submit-button");
 
                     // Update wordsFound based on completed rows
                     const updateWordsFound = () => {
@@ -234,30 +237,35 @@
                         lettersContainer.appendChild(letterDiv);
                     });
 
+                    // Function to handle word submission
+                    const handleSubmit = () => {
+                        const guessedWord = inputArea.textContent.trim().toLowerCase();
+                        const wordRow = [...wordsContainer.querySelectorAll(".word-row")].find(row => row.dataset.word === guessedWord);
+                        if (wordRow) {
+                            if ([...wordRow.children].every(box => box.textContent)) {
+                                inputArea.textContent = "";
+                                messageDiv.textContent = "Word already found";
+                            } else {
+                                [...wordRow.children].forEach((letterBox, index) => {
+                                    letterBox.textContent = guessedWord[index];
+                                });
+                                inputArea.textContent = "";
+                                updateWordsFound();
+                                if (wordsFound === subwords.length) {
+                                    celebrationDiv.style.display = "block";
+                                    newGameButton.style.display = "block";
+                                }
+                            }
+                        } else {
+                            inputArea.textContent = "";
+                            messageDiv.textContent = "Not from the list";
+                        }
+                    };
+
                     // Listen for enter key press to check word
                     document.addEventListener("keydown", (e) => {
                         if (e.key === "Enter") {
-                            const guessedWord = inputArea.textContent.trim().toLowerCase();
-                            const wordRow = [...wordsContainer.querySelectorAll(".word-row")].find(row => row.dataset.word === guessedWord);
-                            if (wordRow) {
-                                if ([...wordRow.children].every(box => box.textContent)) {
-                                    inputArea.textContent = "";
-                                    messageDiv.textContent = "Word already found";
-                                } else {
-                                    [...wordRow.children].forEach((letterBox, index) => {
-                                        letterBox.textContent = guessedWord[index];
-                                    });
-                                    inputArea.textContent = "";
-                                    updateWordsFound();
-                                    if (wordsFound === subwords.length) {
-                                        celebrationDiv.style.display = "block";
-                                        newGameButton.style.display = "block";
-                                    }
-                                }
-                            } else {
-                                inputArea.textContent = "";
-                                messageDiv.textContent = "Not from the list";
-                            }
+                            handleSubmit();
                         } else if (e.key === "Backspace") {
                             inputArea.textContent = inputArea.textContent.slice(0, -1);
                             messageDiv.textContent = "";
@@ -269,6 +277,9 @@
                             }
                         }
                     });
+
+                    // Add click event to submit button
+                    submitButton.addEventListener("click", handleSubmit);
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
